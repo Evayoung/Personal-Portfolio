@@ -16,11 +16,11 @@ Designed for performance, simplicity, and elegance, this portfolio highlights a 
 
 | Section           | Screenshot                                                    |
 | ----------------- | ------------------------------------------------------------- |
-| Hero Section      | ![Hero Section](assets/screenshot/hero_section.jpg)           |
-| About Section     | ![About Section](assets/screenshot/abou_section.jpg)          |
-| Services Section  | ![Services Section](assets/screenshot/service_section.jpg)    |
-| Portfolio Section | ![Portfolio Section](assets/screenshot/portfolio_section.jpg) |
-| Contact Section   | ![Contact Section](assets/screenshot/contact_section.jpg)     |
+| Hero Section      | ![Hero Section](assets/screenshots/hero_section.jpg)           |
+| About Section     | ![About Section](assets/screenshots/abou_section.jpg)          |
+| Services Section  | ![Services Section](assets/screenshots/service_section.jpg)    |
+| Portfolio Section | ![Portfolio Section](assets/screenshots/portfolio_section.jpg) |
+| Contact Section   | ![Contact Section](assets/screenshots/contact_section.jpg)     |
 
 ---
 
