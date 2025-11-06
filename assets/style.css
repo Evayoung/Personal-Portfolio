@@ -1,0 +1,188 @@
+/* style.css
+   Reflex-ready global stylesheet for Olorundare Micheal portfolio
+   - Uses HSL tokens for color palette.
+   - Defines custom UI classes like 'glass' and 'border-gradient-ring'.
+   - Contains all required CSS keyframes.
+*/
+
+/* --- Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Crimson+Pro:wght@300;400;500;600&display=swap');
+
+/* --- Color Tokens (HSL) --- */
+/* These tokens are also mirrored in rxconfig.py for Reflex props */
+:root {
+  /* Core Space Theme Colors */
+  --bg: hsl(220 20% 8%);
+  --fg: hsl(210 20% 95%);
+  --alt-fg: hsl(0, 0%, 47%);
+  --muted: hsl(220 25% 15%);
+  --card: hsl(220 30% 12%);
+  --border: hsl(220 30% 18%);
+  --hover-button: hsl(222, 33%, 25%);
+  --harsh: hsl(240, 1%, 28%);
+  --radius: 0.75rem;
+  --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Primary (Cyber Cyan) */
+  --primary: hsl(190 80% 60%);
+  --primary-contrast: hsl(220 20% 8%);
+  
+  /* Accent (Organic Amber) */
+  --accent: hsl(45 90% 60%);
+  
+  /* Gradients for borders/shadows */
+  --gradient-cyber: linear-gradient(90deg, hsl(190, 80%, 60%) 0%, hsl(200, 70%, 70%) 100%);
+  --gradient-organic: linear-gradient(90deg, hsl(45, 90%, 60%) 0%, hsl(30, 80%, 70%) 100%);
+  --gradient-boder: linear-gradient(135deg, hsl(190 80% 60%), hsl(220 30% 18%) 100%);
+}
+
+/* --- Base Styles --- */
+* { 
+  box-sizing: border-box; 
+  /* Disable selection on text elements to prevent accidental highlighting */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+html, body, #root { 
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  /* Use the dark background color */
+  background-color: var(--bg);
+}
+
+/* --- Custom UI Classes --- */
+
+/* 1. Glass Morphism for Navbar */
+.glass {
+  background-color: rgba(20, 20, 30, 0.4); /* Dark semi-transparent background */
+  backdrop-filter: blur(12px); /* Strong blur effect */
+  border-bottom: 1px solid var(--border); /* Subtle border for separation */
+}
+
+
+/* 2. Glowing Ring for Profile Picture */
+.border-gradient-ring {
+  /* Use an intricate background to create a gradient border effect */
+  background: var(--card); /* Fallback background for inner area */
+  position: relative;
+  z-index: 1; /* Keep content above the pseudo-element glow */
+}
+.border-gradient-ring::before {
+  content: "";
+  position: absolute;
+  top: -2px; /* Slight offset to ensure full coverage */
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  border-radius: 50%;
+  /* Apply the pulsing glow gradient */
+  background: var(--gradient-cyber);
+  animation: pulse-glow-border 4s infinite alternate ease-in-out;
+}
+
+/* 3. Social Badge Glow on Hover (Used in Hero Section) */
+.glow-hover-cyan:hover {
+  box-shadow: 0 0 15px 3px hsl(190, 80%, 60%);
+}
+
+/* this was the style you asked me to add to the style.css, i chaged the .glass to .glass-menu because i have a style with that name befor */
+
+.glass-menu {
+  backdrop-filter: blur(10px);
+  background: rgba(18, 18, 20, 0.85);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* --- Keyframes (Used by animation.py) --- */
+
+/* In your style.css */
+@media (max-width: 768px) {
+  body.menu-open {
+    overflow: hidden; /* prevent background scroll when menu open */
+    width: 100%;
+    position: fixed;  /* ADD THIS: Prevents scroll entirely */
+  }
+}
+
+/* Ensure root level doesn't allow overflow */
+html {
+  overflow-x: hidden;  /* ADD THIS: Prevent horizontal scroll globally */
+}
+
+body {
+  overflow-x: hidden;  /* ADD THIS */
+}
+
+ /* it stops here, i mean you style that you gave */
+
+
+/* Keyframe for the pulsing glow border */
+@keyframes pulse-glow-border {
+  0% {
+    filter: blur(4px) brightness(0.8);
+    transform: scale(1.0);
+    opacity: 0.7;
+  }
+  50% {
+    filter: blur(8px) brightness(1.2);
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    filter: blur(4px) brightness(0.8);
+    transform: scale(1.0);
+    opacity: 0.7;
+  }
+}
+
+/* Keyframe for general fade-in-up effect (used by animation.py for page load) */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyframes for the skill progress bars (will be used in the next section) */
+@keyframes skill-fill {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+/* Custom class for subtly glowing text (headings) */
+.glow-text {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+/* Global scrollbar styling for dark mode visibility */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(190, 80%, 70%);
+}
