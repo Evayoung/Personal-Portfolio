@@ -33,4 +33,4 @@ ENV PYTHONUNBUFFERED=1
 ENV REFLEX_ENV=prod
 
 # Start command - single process, no workers
-CMD reflex run --env prod --loglevel info --backend-host 0.0.0.0 --backend-port $PORT
+CMD reflex run --env prod --loglevel info --backend-host 0.0.0.0 --backend-port $PORT --workers 1
