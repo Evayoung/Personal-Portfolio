@@ -33,4 +33,10 @@ ENV PYTHONUNBUFFERED=1
 ENV REFLEX_ENV=prod
 
 # Start command - single process, no workers
-CMD granian --host 0.0.0.0 --port $PORT --workers 1 --log-level info portfolio.portfolio:app
+CMD granian \
+    --interface asgi \
+    --host 0.0.0.0 \
+    --port $PORT \
+    --workers 1 \
+    --log-level info \
+    portfolio.asgi:asgi_app
