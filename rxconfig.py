@@ -1,14 +1,14 @@
 import reflex as rx
 import os
 
-# Detect production
-is_production = os.getenv("PORT") is not None
+# Simple production detection
+is_production = os.getenv("REFLEX_ENV") == "prod"
 
 # Your Render URL
 RENDER_URL = "https://personal-portfolio-su62.onrender.com"
 
-# Render's dynamic port
-PORT = int(os.getenv("PORT", 10000))
+# Port from environment
+PORT = int(os.getenv("PORT", 8000))
 
 config = rx.Config(
     app_name="portfolio",
@@ -16,13 +16,12 @@ config = rx.Config(
     # Remove badge
     show_built_with_reflex=False,
     
-    # CRITICAL FIX: api_url must be https://, NOT wss://
-    # Reflex automatically converts this to wss:// for WebSocket
+    # URLs - HTTPS not WSS
     api_url=RENDER_URL if is_production else "http://localhost:8000",
     deploy_url=RENDER_URL if is_production else "http://localhost:3000",
     
     # Port configuration
-    backend_port=PORT if is_production else 8000,
+    backend_port=PORT,
     frontend_port=PORT if is_production else 3000,
     backend_host="0.0.0.0" if is_production else "localhost",
     
@@ -35,7 +34,7 @@ config = rx.Config(
         "http://localhost:8000"
     ],
     
-    # WebSocket timeout
+    # Timeout
     timeout=120,
     
     # Database

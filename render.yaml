@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: personal-portfolio
+    env: docker
+    region: oregon
+    plan: free
+    
+    # Docker-specific: No build command needed
+    # Render builds from Dockerfile automatically
+    
+    # Health check
+    healthCheckPath: /ping
+    
+    # Environment variables
+    envVars:
+      - key: REFLEX_ENV
+        value: prod
+      
+      - key: PORT
+        generateValue: true
