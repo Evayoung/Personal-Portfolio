@@ -76,6 +76,7 @@ def project_links_overlay(project: Dict[str, Any]) -> rx.Component:
 
 
 def project_card(project: Dict[str, Any]) -> rx.Component:
+    image_url = project["image_url"]
     return rx.box(
         rx.flex(
             # --- Image/Overlay Area (Layered) ---
@@ -178,7 +179,8 @@ def project_card(project: Dict[str, Any]) -> rx.Component:
         border_radius="12px",
         overflow="hidden",
         padding="0",
-        background_image=f"url('{project["image_url"]}')", 
+        background_image = f"url('{image_url}')",
+        # background_image=f"url('{project["image_url"]}')", 
         background_size="cover",
         background_position="center",
         background_repeat="no-repeat",

@@ -17,7 +17,6 @@ config = rx.Config(
     show_built_with_reflex=False,
     
     # URLs - HTTPS not WSS
-    api_url=RENDER_URL if is_production else "http://localhost:8000",
     deploy_url=RENDER_URL if is_production else "http://localhost:3000",
     
     # Port configuration

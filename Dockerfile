@@ -23,7 +23,7 @@ COPY . .
 
 # Initialize Reflex and export the app
 RUN reflex init && \
-    reflex export --no-zip
+    reflex export --frontend-only
 
 # Expose port (Render will override with $PORT)
 EXPOSE 8000
